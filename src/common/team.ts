@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export class Team {
-	id: string;
+	readonly id: string;
 	seed: number;
 	name: string;
 	img: string;

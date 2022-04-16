@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import type { Team } from './team';
 
 export class Conference {
-	id: string;
+	readonly id: string;
 	name: string;
 	img: string;
 	teams: Team[];
