@@ -1,5 +1,7 @@
 export const appConfig = {
-	name: 'Svelte NBA Playoffs Bracket',
+	name: 'SvelteKit NBA Playoffs Bracket',
+	version: '0.2',
 	author: 'Michał Droździk',
-	version: '0.1'
+	authorLink: 'https://github.com/RawMajkel',
+	latestEdit: new Date('2022-04-16')
 };

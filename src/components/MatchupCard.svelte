@@ -1,33 +1,36 @@
 <script type="ts">
-	import { MatchupTeam } from '../common/matchupTeam';
-	import type { Matchup } from '../common/matchup';
+	import type { matchupTeam } from 'src/common/matchupTeam';
+	import type { matchup } from '../common/matchup';
 
-	export let matchup: Matchup;
+	export let matchup: matchup;
 
-	let matchupPair: MatchupTeam[] = [
-		new MatchupTeam(matchup.higherTeam),
-		new MatchupTeam(matchup.lowerTeam)
-	];
+	let matchupPair: matchupTeam[] = [matchup.higherTeam, matchup.lowerTeam];
+
+	// console.log(matchup);
 </script>
 
 <div class="matchup">
 	{#each matchupPair as matchupTeam}
-		<div class="matchupTeam d-flex align-items-center justify-content-between">
-			<div class="matchupTeam__wrapper d-flex align-items-center">
-				<img
-					src={matchupTeam.teamImgPath}
-					alt={`${matchupTeam.teamFullName} logo`}
-					class="matchupTeam__logo"
-					loading="lazy"
-				/>
-				<div class="matchupTeam__wrapper">
-					<div class="matchupTeam__name">
-						{`${matchupTeam.teamSeed}. ${matchupTeam.teamName}`}
+		{#if matchupTeam !== undefined}
+			<div class="matchupTeam d-flex align-items-center justify-content-between">
+				<div class="matchupTeam__wrapper d-flex align-items-center">
+					<img
+						src={matchupTeam.teamImgPath}
+						alt={`${matchupTeam.teamFullName} logo`}
+						class="matchupTeam__logo"
+						loading="lazy"
+					/>
+					<div class="matchupTeam__wrapper">
+						<div class="matchupTeam__name">
+							{`${matchupTeam.teamSeed}. ${matchupTeam.teamName}`}
+						</div>
 					</div>
 				</div>
+				<div class="matchupTeam__wins">{matchupTeam.wins}</div>
 			</div>
-			<div class="matchupTeam__wins">{matchupTeam.wins}</div>
-		</div>
+		{:else}
+			undefined
+		{/if}
 	{/each}
 </div>
 

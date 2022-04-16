@@ -10,7 +10,7 @@
 	<h1 class="heading__title text-center">
 		{appConfig.name} <sup class="heading__version">v. {appConfig.version}</sup>
 	</h1>
-	<div class="heading__author text-center">{appConfig.author}</div>
+	<div class="heading__subtitle text-center">2021-2022 Season</div>
 </div>
 
 <style lang="scss">
@@ -32,9 +32,6 @@
 			color: #fff;
 			font-weight: 600;
 			border-radius: 8px;
-		}
-
-		&__author {
 		}
 	}
 </style>

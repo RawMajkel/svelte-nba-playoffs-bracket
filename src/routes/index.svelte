@@ -1,7 +1,9 @@
 <script lang="ts">
-	import Heading from './../components/Heading.svelte';
+	import Footer from './../components/Footer.svelte';
+	import Header from '../components/Header.svelte';
 	import Tree from './../components/Tree.svelte';
 </script>
 
-<Heading />
+<Header />
 <Tree />
+<Footer />
