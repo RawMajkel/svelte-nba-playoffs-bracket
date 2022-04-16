@@ -4,7 +4,7 @@
 </script>
 
 <div class="conferences">
-	{#each $conferences.data as conference (conference.id)}
-		<Conference {conference} />
+	{#each $conferences.data as conference, index (conference.id)}
+		<Conference {conference} rtl={index % 2 != 0} />
 	{/each}
 </div>

@@ -1,16 +1,24 @@
 <script type="ts">
 	import type { Conference } from 'src/common/conference';
-	import TeamCard from './TeamCard.svelte';
+	import type { Matchup } from '../common/matchup';
+	import { createMatchups } from '../services/teamsService';
+	import MatchupCard from './MatchupCard.svelte';
 
 	export let conference: Conference;
+	export let rtl: Boolean = false;
+
+	const matchups: Matchup[] = createMatchups(conference.teams);
 </script>
 
-<div class="conference conference--{conference.name.toLowerCase()}" data-id={conference.id}>
+<div
+	class="conference conference--{conference.name.toLowerCase()}{rtl ? ' conference--rtl' : ''}"
+	data-id={conference.id}
+>
 	<h2 class="conference__title">{conference.fullName} Conference</h2>
 
 	<div class="conference__teams">
-		{#each conference.teams as team (team.id)}
-			<TeamCard {team} />
+		{#each matchups as matchup}
+			<MatchupCard {matchup} />
 		{/each}
 	</div>
 </div>
