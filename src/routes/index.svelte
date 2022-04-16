@@ -1,9 +1,6 @@
 <script lang="ts">
 	import { conferences } from '../stores';
 	import { appConfig } from './../config/config';
-
-	const appName: string = 'Svelte NBA Playoffs Bracket';
-	const appAuthor: string = 'Majkel';
 </script>
 
 <svelte:head>
