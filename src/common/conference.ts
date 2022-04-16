@@ -4,13 +4,13 @@ import type { Team } from './team';
 export class Conference {
 	readonly id: string;
 	name: string;
-	img: string;
+	fullName: string;
 	teams: Team[];
 
-	constructor(name: string, img: string, teams: Team[] = []) {
+	constructor(name: string, fullName: string, teams: Team[] = []) {
 		this.id = uuidv4();
 		this.name = name;
-		this.img = img;
+		this.fullName = fullName;
 		this.teams = teams;
 	}
 }

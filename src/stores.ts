@@ -3,25 +3,25 @@ import { Team } from './common/team';
 import { Conference } from './common/conference';
 
 const conferencesData: Conference[] = [
-	new Conference('west', 'https://via.placeholder.com/300x300', [
-		new Team(1, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(2, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(3, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(4, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(5, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(6, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(7, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(8, 'lorem ipsum', 'https://via.placeholder.com/150x150')
+	new Conference('West', 'Western', [
+		new Team(1, 'Suns', 'Phoenix', 'PHX'),
+		new Team(2, 'Grizzlies', 'Memphis', 'MEM'),
+		new Team(3, 'Warriors', 'Golden State', 'GSW', 'warriors'),
+		new Team(4, 'Mavericks', 'Dallas', 'DAL'),
+		new Team(5, 'Jazz', 'Utah', 'UTA'),
+		new Team(6, 'Nuggets', 'Denver', 'DEN'),
+		new Team(7, 'Timberwolves', 'Minnesota', 'MIN', 'timberwolves'),
+		new Team(8, 'Pelicans', 'New Orleans', 'NOP', 'pelicans')
 	]),
-	new Conference('east', 'https://via.placeholder.com/300x300', [
-		new Team(1, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(2, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(3, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(4, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(5, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(6, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(7, 'lorem ipsum', 'https://via.placeholder.com/150x150'),
-		new Team(8, 'lorem ipsum', 'https://via.placeholder.com/150x150')
+	new Conference('East', 'Eastern', [
+		new Team(1, 'Heat', 'Miami', 'MIA'),
+		new Team(2, 'Celtics', 'Boston', 'BOS'),
+		new Team(3, 'Bucks', 'Milwaukee', 'MIL'),
+		new Team(4, '76ers', 'Philadelphia', 'PHI', '76ers'),
+		new Team(5, 'Raptors', 'Toronto', 'TOR'),
+		new Team(6, 'Bulls', 'Chicago', 'CHI'),
+		new Team(7, 'Nets', 'Brooklyn', 'BKN'),
+		new Team(8, 'Hawks', 'Atlanta', 'ATL')
 	])
 ];
 
