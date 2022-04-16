@@ -16,9 +16,28 @@
 >
 	<h2 class="conference__title">{conference.fullName} Conference</h2>
 
-	<div class="conference__teams">
+	<div class="conference__teams d-grid">
 		{#each matchups as matchup}
 			<MatchupCard {matchup} />
 		{/each}
 	</div>
 </div>
+
+<style lang="scss">
+	$conference: '.conference';
+	#{$conference} {
+		--cardWidth: 170px;
+
+		&__teams {
+			gap: 20px;
+		}
+
+		&__teams {
+			grid-template-columns: var(--cardWidth);
+		}
+
+		&--rtl &__teams {
+			justify-content: flex-end;
+		}
+	}
+</style>

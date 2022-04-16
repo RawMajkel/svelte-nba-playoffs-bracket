@@ -1,22 +1,64 @@
 <script type="ts">
+	import { MatchupTeam } from '../common/matchupTeam';
 	import type { Matchup } from '../common/matchup';
 
 	export let matchup: Matchup;
+
+	let matchupPair: MatchupTeam[] = [
+		new MatchupTeam(matchup.higherTeam),
+		new MatchupTeam(matchup.lowerTeam)
+	];
 </script>
 
-<!-- <div class="team team--{team.abbr.toLowerCase()}" data-id={team.id}>
-	<img class="team__logo" src={team.imgPath} alt={`${team.fullName} logo`} loading="lazy" />
-	<h3 class="team__title">{team.seed}. {team.fullName}</h3>
-</div> -->
-
-<h3 class="team__title">{matchup.higherTeam.seed}. {matchup.higherTeam.fullName}</h3>
-<h3 class="team__title">{matchup.lowerTeam.seed}. {matchup.lowerTeam.fullName}</h3>
+<div class="matchup">
+	{#each matchupPair as matchupTeam}
+		<div class="matchupTeam d-flex align-items-center justify-content-between">
+			<div class="matchupTeam__wrapper d-flex align-items-center">
+				<img
+					src={matchupTeam.teamImgPath}
+					alt={`${matchupTeam.teamFullName} logo`}
+					class="matchupTeam__logo"
+					loading="lazy"
+				/>
+				<div class="matchupTeam__wrapper">
+					<div class="matchupTeam__name">
+						{`${matchupTeam.teamSeed}. ${matchupTeam.teamName}`}
+					</div>
+				</div>
+			</div>
+			<div class="matchupTeam__wins">{matchupTeam.wins}</div>
+		</div>
+	{/each}
+</div>
 
 <style lang="scss">
-	$team: '.team';
-	#{$team} {
+	$matchup: '.matchup';
+	#{$matchup} {
+		--borderColor: #999;
+		border: 1px solid var(--borderColor);
+		max-width: var(--cardWidth);
+	}
+
+	$matchupTeam: '.matchupTeam';
+	#{$matchupTeam} {
 		&__logo {
-			width: 100px;
+			width: 35px;
+			aspect-ratio: 1;
+		}
+
+		&:first-of-type {
+			border-bottom: 1px solid var(--borderColor);
+		}
+
+		&__name {
+			font-size: 0.8em;
+			padding: 10px 0;
+			white-space: nowrap;
+		}
+
+		&__wins {
+			font-weight: 600;
+			padding: 10px;
 		}
 	}
 </style>

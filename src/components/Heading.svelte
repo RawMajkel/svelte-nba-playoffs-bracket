@@ -7,16 +7,34 @@
 </svelte:head>
 
 <div class="heading">
-	<h1 class="heading__title">{appConfig.name}</h1>
-	<div class="heading__author">{appConfig.author}</div>
-	<p class="heading__version">{appConfig.version}</p>
+	<h1 class="heading__title text-center">
+		{appConfig.name} <sup class="heading__version">v. {appConfig.version}</sup>
+	</h1>
+	<div class="heading__author text-center">{appConfig.author}</div>
 </div>
 
 <style lang="scss">
 	$heading: '.heading';
 	#{$heading} {
+		margin: 40px 0 20px;
+
 		&__title {
-			font-size: 1.5em;
+			font-size: 2.4em;
+			font-weight: 800;
+			color: #222;
+		}
+
+		&__version {
+			font-size: 0.9rem;
+			display: inline-flex;
+			background: green;
+			padding: 4px 6px;
+			color: #fff;
+			font-weight: 600;
+			border-radius: 8px;
+		}
+
+		&__author {
 		}
 	}
 </style>
