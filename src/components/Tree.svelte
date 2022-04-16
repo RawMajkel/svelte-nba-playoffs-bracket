@@ -1,10 +1,10 @@
 <script type="ts">
 	import { conferences } from '../stores';
-	import Conference from './Conference.svelte';
+	import ConferenceCard from './ConferenceCard.svelte';
 </script>
 
 <div class="conferences">
 	{#each $conferences.data as conference, index (conference.id)}
-		<Conference {conference} rtl={index % 2 != 0} />
+		<ConferenceCard {conference} rtl={index % 2 != 0} />
 	{/each}
 </div>
