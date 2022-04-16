@@ -2,19 +2,31 @@
 	import { conferences } from '../stores';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>Svelte NBA Playoffs Bracket</h1>
+<p>by Majkel</p>
 
 <div class="conferences">
 	{#each $conferences.data as conference (conference.id)}
-		<div class="conference" data-id={conference.id}>
-			{conference.name}
+		<div class="conference conference--{conference.name.toLowerCase()}" data-id={conference.id}>
+			<h2 class="conference__title">{conference.fullName} Conference</h2>
 
-			<ol>
+			<div class="conference__teams">
 				{#each conference.teams as team (team.id)}
-					<li class="team" data-id={team.id}>{team.name}</li>
+					<div class="team team--{team.abbr.toLowerCase()}" data-id={team.id}>
+						<img class="team__logo" src={team.imgPath} alt={`${team.fullName} logo`} />
+						<h3 class="team__title">{team.fullName}</h3>
+					</div>
 				{/each}
-			</ol>
+			</div>
 		</div>
 	{/each}
 </div>
+
+<style lang="scss">
+	$team: '.team';
+	#{$team} {
+		&__logo {
+			width: 100px;
+		}
+	}
+</style>
