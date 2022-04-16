@@ -1,9 +1,18 @@
 <script lang="ts">
 	import { conferences } from '../stores';
+	import { appConfig } from './../config/config';
+
+	const appName: string = 'Svelte NBA Playoffs Bracket';
+	const appAuthor: string = 'Majkel';
 </script>
 
-<h1>Svelte NBA Playoffs Bracket</h1>
-<p>by Majkel</p>
+<svelte:head>
+	<title>{appConfig.name}</title>
+</svelte:head>
+
+<h1>{appConfig.name}</h1>
+<div>{appConfig.author}</div>
+<p>{appConfig.version}</p>
 
 <div class="conferences">
 	{#each $conferences.data as conference (conference.id)}
@@ -13,7 +22,12 @@
 			<div class="conference__teams">
 				{#each conference.teams as team (team.id)}
 					<div class="team team--{team.abbr.toLowerCase()}" data-id={team.id}>
-						<img class="team__logo" src={team.imgPath} alt={`${team.fullName} logo`} />
+						<img
+							class="team__logo"
+							src={team.imgPath}
+							alt={`${team.fullName} logo`}
+							loading="lazy"
+						/>
 						<h3 class="team__title">{team.fullName}</h3>
 					</div>
 				{/each}
