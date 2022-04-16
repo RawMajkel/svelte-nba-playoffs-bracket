@@ -1,6 +1,7 @@
 import { readable } from 'svelte/store';
 import { Team } from './common/team';
 import { Conference } from './common/conference';
+import { NbaStore } from './common/nbaStore';
 
 const conferencesData: Conference[] = [
 	new Conference('West', 'Western', [
@@ -25,12 +26,4 @@ const conferencesData: Conference[] = [
 	])
 ];
 
-class Store {
-	readonly data: Conference[];
-
-	constructor(conferences: Conference[]) {
-		this.data = conferences;
-	}
-}
-
-export const conferences = readable(new Store(conferencesData));
+export const conferences = readable(new NbaStore(conferencesData));

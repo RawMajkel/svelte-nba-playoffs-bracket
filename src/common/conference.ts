@@ -8,6 +8,10 @@ export class Conference {
 	teams: Team[];
 
 	constructor(name: string, fullName: string, teams: Team[] = []) {
+		if (teams.length != 8) {
+			throw new Error('Playoff teams must equal 8 for each conference');
+		}
+
 		this.id = uuidv4();
 		this.name = name;
 		this.fullName = fullName;
