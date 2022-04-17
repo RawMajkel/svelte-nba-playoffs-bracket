@@ -18,5 +18,11 @@ export class matchupTeam {
 		this.isTbd = isTbd;
 	}
 
-	setWins = (wins: number) => (this.wins = wins);
+	setWins(wins: number) {
+		this.wins = wins;
+	}
+
+	resetWins() {
+		this.wins = 0;
+	}
 }

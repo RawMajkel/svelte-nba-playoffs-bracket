@@ -9,28 +9,24 @@
 	// console.log(matchup);
 </script>
 
-<div class="matchup">
+<div class="matchup" id={matchup.id}>
 	{#each matchupPair as matchupTeam}
-		{#if matchupTeam !== undefined}
-			<div class="matchupTeam d-flex align-items-center justify-content-between">
-				<div class="matchupTeam__wrapper d-flex align-items-center">
-					<img
-						src={matchupTeam.teamImgPath}
-						alt={`${matchupTeam.teamFullName} logo`}
-						class="matchupTeam__logo"
-						loading="lazy"
-					/>
-					<div class="matchupTeam__wrapper">
-						<div class="matchupTeam__name">
-							{`${matchupTeam.teamSeed}. ${matchupTeam.teamName}`}
-						</div>
+		<div class="matchupTeam d-flex align-items-center justify-content-between">
+			<div class="matchupTeam__wrapper d-flex align-items-center">
+				<img
+					src={matchupTeam.teamImgPath}
+					alt={`${matchupTeam.teamFullName} logo`}
+					class="matchupTeam__logo"
+					loading="lazy"
+				/>
+				<div class="matchupTeam__wrapper">
+					<div class="matchupTeam__name">
+						{`${matchupTeam.teamSeed}. ${matchupTeam.teamName}`}
 					</div>
 				</div>
-				<div class="matchupTeam__wins">{matchupTeam.wins}</div>
 			</div>
-		{:else}
-			undefined
-		{/if}
+			<div class="matchupTeam__wins">{matchupTeam.wins}</div>
+		</div>
 	{/each}
 </div>
 

@@ -18,14 +18,14 @@ const west = new storeConference(
 		new storeTeam(8, 'Pelicans', 'New Orleans', 'NOP', 'pelicans')
 	],
 	new storeRound('First round', '', [
-		[4, 1],
-		[2, 4],
+		[4, 0],
 		[0, 4],
-		[4, 2]
+		[0, 4],
+		[4, 0]
 	]),
 	new storeRound('Second round', 'Conference Semifinals', [
-		[0, 0],
-		[0, 0]
+		[2, 1],
+		[1, 2]
 	]),
 	new storeRound('Semifinals', 'Conference finals', [[0, 0]]),
 	0

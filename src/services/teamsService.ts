@@ -23,9 +23,20 @@ const createFirstRoundMatchups = (inputTeams: storeTeam[], results: number[][]):
 	return result;
 };
 
-export const createFirstRoundData = (inputTeams: storeTeam[], incomingRound: storeRound): round => {
-	const matchups = createFirstRoundMatchups(inputTeams, incomingRound.results);
-	return new round(incomingRound.name, incomingRound.altName, matchups);
+const createMatchups = (teams: matchupTeam[], results: number[][]): matchup[] => {
+	let data: matchup[] = [];
+
+	for (let i = 0; i < teams.length; i++) {
+		if (i % 2 === 0) {
+			data.push(new matchup(teams[i], teams[i + 1]));
+		}
+	}
+
+	for (let i = 0; i < data.length; i++) {
+		data[i].setResults(results[i]); // tutaj problem
+	}
+
+	return data;
 };
 
 const getFirstRoundWinners = (previousRound: round): matchupTeam[] => {
@@ -44,27 +55,16 @@ const getFirstRoundWinners = (previousRound: round): matchupTeam[] => {
 	return result;
 };
 
+export const createFirstRoundData = (inputTeams: storeTeam[], incomingRound: storeRound): round => {
+	const matchups = createFirstRoundMatchups(inputTeams, incomingRound.results);
+	return new round(incomingRound.name, incomingRound.altName, matchups);
+};
+
 export const createSecondRoundData = (firstRound: round, incomingRound: storeRound): round => {
 	const firstRoundWinners = getFirstRoundWinners(firstRound);
 	const matchups = createMatchups(firstRoundWinners, incomingRound.results);
 
 	return new round(incomingRound.name, incomingRound.altName, matchups);
-};
-
-const createMatchups = (teams: matchupTeam[], results: number[][]): matchup[] => {
-	var data: matchup[] = [];
-
-	for (var i = 0; i < teams.length; i++) {
-		if (i % 2 === 0) {
-			data.push(new matchup(teams[i], teams[i + 1]));
-		}
-	}
-
-	for (let i = 0; i < data.length; i++) {
-		data[i].setResults(results[i]); // tutaj problem
-	}
-
-	return data;
 };
 
 export const createNextRoundData = (previousRound: round, incomingRound: storeRound): round => {

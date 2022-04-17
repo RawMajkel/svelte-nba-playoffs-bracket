@@ -1,6 +1,8 @@
+import { v4 as uuidv4 } from 'uuid';
 import type { matchupTeam } from './matchupTeam';
 
 export class matchup {
+	id: string;
 	higherTeam: matchupTeam;
 	lowerTeam: matchupTeam;
 	isTbd: boolean;
@@ -10,6 +12,7 @@ export class matchup {
 		incomingTeamTwo: matchupTeam,
 		results: number[] = [0, 0]
 	) {
+		this.id = uuidv4();
 		this.validate(results);
 
 		if (incomingTeamOne.teamSeed < incomingTeamTwo.teamSeed) {
@@ -26,6 +29,11 @@ export class matchup {
 
 		this.higherTeam.setWins(results[0]);
 		this.lowerTeam.setWins(results[1]);
+	}
+
+	resetWins() {
+		this.higherTeam.resetWins();
+		this.lowerTeam.resetWins();
 	}
 
 	private validate(results: number[]) {
