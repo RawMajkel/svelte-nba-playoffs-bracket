@@ -1,8 +1,8 @@
 import { readable } from 'svelte/store';
-import { storeTeam } from './common/storeTeam';
-import { storeConference } from './common/storeConference';
-import { storePayoffs } from './common/storePayoffs';
-import { storeRound } from './common/storeRound';
+import { storeTeam } from './common/store/storeTeam';
+import { storeConference } from './common/store/storeConference';
+import { storePayoffs } from './common/store/storePayoffs';
+import { storeRound } from './common/store/storeRound';
 
 const west = new storeConference(
 	'Western',
@@ -18,14 +18,14 @@ const west = new storeConference(
 		new storeTeam(8, 'Pelicans', 'New Orleans', 'NOP', 'pelicans')
 	],
 	new storeRound('First round', '', [
-		[4, 0],
-		[0, 4],
-		[0, 4],
-		[4, 0]
+		[1, 4],
+		[4, 2],
+		[4, 3],
+		[3, 3]
 	]),
 	new storeRound('Second round', 'Conference Semifinals', [
-		[2, 1],
-		[1, 2]
+		[4, 0],
+		[0, 0]
 	]),
 	new storeRound('Semifinals', 'Conference finals', [[0, 0]]),
 	0
@@ -45,14 +45,14 @@ const east = new storeConference(
 		new storeTeam(8, 'Hawks', 'Atlanta', 'ATL')
 	],
 	new storeRound('First round', '', [
+		[4, 0],
+		[4, 0],
 		[0, 4],
-		[4, 3],
-		[0, 0],
-		[0, 0]
+		[4, 0]
 	]),
 	new storeRound('Second round', 'Conference Semifinals', [
-		[0, 0],
-		[0, 0]
+		[0, 4],
+		[4, 0]
 	]),
 	new storeRound('Semifinals', 'Conference finals', [[0, 0]]),
 	0
@@ -61,4 +61,4 @@ const east = new storeConference(
 const playoffs = new storePayoffs('NBA 2022 Playoffs', west, east);
 
 export const storePlayoffsData = readable(playoffs);
-export const tbd = new storeTeam(0, 'TBD', 'TBD', 'TBD', 'nba');
+export const tbd = readable(new storeTeam(0, 'TBD', 'TBD', 'TBD', 'nba'));

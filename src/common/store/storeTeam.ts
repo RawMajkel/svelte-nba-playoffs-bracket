@@ -1,4 +1,7 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export class storeTeam {
+	id: string;
 	name: string;
 	city: string;
 	abbr: string;
@@ -9,6 +12,7 @@ export class storeTeam {
 	static readonly imgPath: string = 'https://logotyp.us/files';
 
 	constructor(seed: number, name: string, city: string, abbr: string, imgName: string = null) {
+		this.id = uuidv4();
 		this.fullName = `${city} ${name}`;
 
 		this.seed = seed;

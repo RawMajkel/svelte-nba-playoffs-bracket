@@ -1,42 +1,31 @@
-import { v4 as uuidv4 } from 'uuid';
-import type { matchupTeam } from './matchupTeam';
+// import { v4 as uuidv4 } from 'uuid';
 
 export class matchup {
-	id: string;
-	higherTeam: matchupTeam;
-	lowerTeam: matchupTeam;
-	isTbd: boolean;
+	// id: string;
+	firstTeamId: string;
+	secondTeamId: string;
+	results: number[] = [0, 0];
 
-	constructor(
-		incomingTeamOne: matchupTeam,
-		incomingTeamTwo: matchupTeam,
-		results: number[] = [0, 0]
-	) {
-		this.id = uuidv4();
-		this.validate(results);
+	constructor(firstTeamId: string, secondTeamId: string, results: number[]) {
+		// this.id = uuidv4();
+		this.firstTeamId = firstTeamId;
+		this.secondTeamId = secondTeamId;
 
-		if (incomingTeamOne.teamSeed < incomingTeamTwo.teamSeed) {
-			this.higherTeam = incomingTeamOne;
-			this.lowerTeam = incomingTeamTwo;
-		} else {
-			this.higherTeam = incomingTeamTwo;
-			this.lowerTeam = incomingTeamOne;
-		}
+		this.setResults(results);
 	}
 
 	setResults(results: number[]) {
-		this.validate(results);
+		this.validateResults(results);
 
-		this.higherTeam.setWins(results[0]);
-		this.lowerTeam.setWins(results[1]);
+		this.results[0] = results[0];
+		this.results[1] = results[1];
 	}
 
-	resetWins() {
-		this.higherTeam.resetWins();
-		this.lowerTeam.resetWins();
-	}
+	private validateResults(results: number[]) {
+		if (results.length !== 2) {
+			throw new Error('Results msut be 2 length');
+		}
 
-	private validate(results: number[]) {
 		if (results[0] == 4 && results[1] == 4) {
 			throw new Error('Results cannot be equal 4 at the same time');
 		}

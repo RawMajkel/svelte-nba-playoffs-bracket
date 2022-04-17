@@ -1,18 +1,11 @@
 <script type="ts">
-	import type { round } from 'src/common/round';
-	import type { storeConference } from 'src/common/storeConference';
-	import {
-		createFirstRoundData,
-		createSecondRoundData,
-		createNextRoundData
-	} from '../services/teamsService';
+	import type { storeConference } from '../common/store/storeConference';
+	import { createConferenceMatchups } from '../services/dataService';
 	import RoundCard from './RoundCard.svelte';
 
 	export let conference: storeConference;
 
-	const firstRound: round = createFirstRoundData(conference.teams, conference.firstRound);
-	const secondRound: round = createSecondRoundData(firstRound, conference.secondRound);
-	const thirdRound: round = createNextRoundData(secondRound, conference.finals);
+	const sortedStandings = createConferenceMatchups(conference);
 </script>
 
 <div class="conference conference--{conference.altName.toLowerCase()}">
@@ -20,15 +13,15 @@
 
 	<div class="conference__rounds d-flex">
 		<div class="conference__round d-grid">
-			<RoundCard roundData={firstRound} />
+			<RoundCard roundData={sortedStandings.firstRound} />
 		</div>
 
 		<div class="conference__round d-grid">
-			<RoundCard roundData={secondRound} />
+			<RoundCard roundData={sortedStandings.secondRound} />
 		</div>
 
 		<div class="conference__round d-grid">
-			<RoundCard roundData={thirdRound} />
+			<RoundCard roundData={sortedStandings.thirdRound} />
 		</div>
 	</div>
 </div>
@@ -36,7 +29,7 @@
 <style lang="scss">
 	$conference: '.conference';
 	#{$conference} {
-		--colWidth: 160px;
+		--colWidth: 130px;
 		--colGap: 20px;
 
 		&__rounds {
