@@ -1,9 +1,9 @@
 <script type="ts">
 	import type { storeConference } from '../common/store/storeConference';
+	import type { confRounds } from 'src/common/confRounds';
 	import { createConferenceMatchups } from '../services/dataService';
 	import { finalsData } from '../stores';
 	import RoundCard from './RoundCard.svelte';
-	import type { confRounds } from 'src/common/confRounds';
 
 	export let conference: storeConference;
 	export let rtl = false;
