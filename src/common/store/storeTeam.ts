@@ -13,7 +13,7 @@ export class storeTeam {
 
 	constructor(seed: number, name: string, city: string, abbr: string, imgName: string = null) {
 		this.id = uuidv4();
-		this.fullName = `${city} ${name}`;
+		this.fullName = city == null ? name : `${city} ${name}`;
 
 		this.seed = seed;
 		this.name = name;
