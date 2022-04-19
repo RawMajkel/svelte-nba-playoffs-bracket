@@ -8,7 +8,6 @@ export class storeConference {
 	firstRound: storeRound;
 	secondRound: storeRound;
 	finals: storeRound;
-	finalistWins: number;
 
 	constructor(
 		name: string,
@@ -16,8 +15,7 @@ export class storeConference {
 		teams: storeTeam[],
 		firstRound: storeRound,
 		secondRound: storeRound,
-		finals: storeRound,
-		finalistWins: number
+		finals: storeRound
 	) {
 		if (teams.length != 8) {
 			throw new Error('Playoff teams must equal 8 for each conference');
@@ -29,6 +27,5 @@ export class storeConference {
 		this.firstRound = firstRound;
 		this.secondRound = secondRound;
 		this.finals = finals;
-		this.finalistWins = finalistWins;
 	}
 }

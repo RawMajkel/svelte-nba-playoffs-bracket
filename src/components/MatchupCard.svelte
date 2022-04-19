@@ -42,18 +42,17 @@
 <style lang="scss">
 	$matchup: '.matchup';
 	#{$matchup} {
-		--borderColor: #999;
-
 		display: flex;
 		flex-direction: column;
 
 		position: relative;
-		border: 1px solid var(--borderColor);
 		max-width: var(--cardWidth);
+		box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+		background: #fff;
 
 		&__divider {
-			height: 1px;
-			background: var(--borderColor);
+			height: 0.5px;
+			background: #bbb;
 			position: absolute;
 			inset: 0;
 			margin: auto;
@@ -62,9 +61,11 @@
 
 	$matchupTeam: '.matchupTeam';
 	#{$matchupTeam} {
+		padding: 4px 0;
+
 		&__logo {
 			width: 50px;
-			aspect-ratio: 1;
+			aspect-ratio: 1.5;
 		}
 
 		&__name {

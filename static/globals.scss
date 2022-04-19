@@ -12,9 +12,11 @@ body {
 	margin: 0;
 	padding: 0;
 	border: 0;
+	font: inherit;
 }
 
 html {
+	background-color: #eee;
 	scroll-behavior: smooth;
 	font: 16px/1.25 'Roboto', sans-serif;
 }

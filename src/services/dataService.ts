@@ -72,7 +72,7 @@ export const createConferenceMatchups = (conference: storeConference): confRound
 	const secoundRoundWinners = getWinners(secondRound);
 
 	const thirdRound = createRound(conference.finals, secoundRoundWinners);
-	const winner = getWinners(thirdRound);
+	const winners = getWinners(thirdRound);
 
-	return new confRounds(firstRound, secondRound, thirdRound);
+	return new confRounds(firstRound, secondRound, thirdRound, winners[0]);
 };

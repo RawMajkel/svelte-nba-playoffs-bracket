@@ -6,7 +6,7 @@
 </script>
 
 <div class="round">
-	<h3>{roundData.name}</h3>
+	<h3 class="round__heading text-center">{roundData.name}</h3>
 	<div class="d-grid round__matchups">
 		{#each roundData.matchups as matchup}
 			<MatchupCard {matchup} />
@@ -19,6 +19,11 @@
 	#{$round} {
 		&__matchups {
 			gap: var(--colGap);
+		}
+
+		&__heading {
+			font-weight: 800;
+			margin-bottom: 10px;
 		}
 	}
 </style>
