@@ -11,7 +11,7 @@
 	];
 
 	const winnerIndex = matchup.results.findIndex((value) => value == 4);
-	const winner = matchupPair[winnerIndex];
+	const winner: storeTeam | undefined = matchupPair[winnerIndex];
 </script>
 
 <div class="finalsMatchup">
@@ -38,9 +38,11 @@
 	{/each}
 </div>
 
-<div class="finalsWinner text-center">
-	{winner.fullName} are the 2021-22 NBA Champions
-</div>
+{#if winner !== undefined}
+	<div class="finalsWinner text-center">
+		{winner.fullName} are the 2021-22 NBA Champions
+	</div>
+{/if}
 
 <style lang="scss">
 	.finalsMatchup {
@@ -68,6 +70,7 @@
 
 		&__name {
 			font-weight: 600;
+			max-width: 130px;
 		}
 
 		&__result {
