@@ -14,8 +14,8 @@
 	const winner: storeTeam | undefined = matchupPair[winnerIndex];
 </script>
 
-<div class="finalsMatchup">
-	<div class="finalsMatchup__divider w-100" />
+<div class="finalsMatchup position-relative">
+	<div class="finalsMatchup__divider position-absolute w-100" />
 	{#each matchupPair as finalsTeam, index}
 		<div class="finalsMatchup__team d-flex align-items-center justify-content-between">
 			<div class="finalsMatchup__wrapper d-flex align-items-center">
@@ -46,7 +46,6 @@
 
 <style lang="scss">
 	.finalsMatchup {
-		position: relative;
 		margin: 30px 0;
 		box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
 
@@ -58,7 +57,6 @@
 		&__divider {
 			height: 0.5px;
 			background: #bbb;
-			position: absolute;
 			inset: 0;
 			margin: auto;
 		}

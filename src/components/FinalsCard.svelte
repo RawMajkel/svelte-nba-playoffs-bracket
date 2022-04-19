@@ -10,7 +10,7 @@
 	);
 </script>
 
-<div class="finals d-grid align-items-center">
+<div class="finals position-absolute d-grid align-items-center">
 	<div class="finals__wrapper">
 		<h1 class="finals__heading text-center">{$finalsData.name}</h1>
 		<div class="finals__matchup d-grid">
@@ -22,7 +22,6 @@
 <style lang="scss">
 	$finals: '.finals';
 	#{$finals} {
-		position: absolute;
 		inset: 0;
 		margin: auto;
 		max-width: 300px;

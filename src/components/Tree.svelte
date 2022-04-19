@@ -9,9 +9,3 @@
 	<ConferenceCard conference={$storePlayoffsData.east} rtl={true} />
 	<FinalsCard />
 </div>
-
-<style lang="scss">
-	.conferences {
-		position: relative;
-	}
-</style>

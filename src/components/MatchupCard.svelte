@@ -11,8 +11,8 @@
 	];
 </script>
 
-<div class="matchup">
-	<div class="matchup__divider w-100" />
+<div class="matchup position-relative">
+	<div class="matchup__divider position-absolute w-100" />
 	{#each matchupPair as matchupTeam, index}
 		<div
 			style="order:{matchupTeam.seed === 0 ? '10' : matchupTeam.seed}"
@@ -45,7 +45,6 @@
 		display: flex;
 		flex-direction: column;
 
-		position: relative;
 		max-width: var(--cardWidth);
 		box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
 		background: #fff;
@@ -53,7 +52,6 @@
 		&__divider {
 			height: 0.5px;
 			background: #bbb;
-			position: absolute;
 			inset: 0;
 			margin: auto;
 		}
