@@ -1,16 +1,11 @@
 <script type="ts">
-	import { conferences } from '../stores';
+	import { storePlayoffsData } from '../stores';
 	import ConferenceCard from './ConferenceCard.svelte';
+	import FinalsCard from './FinalsCard.svelte';
 </script>
 
-<div class="conferences d-flex justify-content-between">
-	{#each $conferences.data as conference, index (conference.id)}
-		<ConferenceCard {conference} rtl={index % 2 != 0} />
-	{/each}
+<div class="conferences d-flex justify-content-between position-relative">
+	<ConferenceCard conference={$storePlayoffsData.west} />
+	<ConferenceCard conference={$storePlayoffsData.east} rtl={true} />
+	<FinalsCard />
 </div>
-
-<style lang="scss">
-	$converences: '.conferences';
-	#{$converences} {
-	}
-</style>

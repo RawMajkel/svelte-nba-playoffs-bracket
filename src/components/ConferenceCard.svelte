@@ -1,42 +1,72 @@
 <script type="ts">
-	import type { Conference } from 'src/common/conference';
-	import type { Matchup } from '../common/matchup';
-	import { createMatchups } from '../services/teamsService';
-	import MatchupCard from './MatchupCard.svelte';
+	import type { storeConference } from '../common/store/storeConference';
+	import type { confRounds } from 'src/common/confRounds';
+	import { createConferenceMatchups } from '../services/dataService';
+	import { finalsData } from '../stores';
+	import RoundCard from './RoundCard.svelte';
 
-	export let conference: Conference;
-	export let rtl: Boolean = false;
+	export let conference: storeConference;
+	export let rtl = false;
 
-	const matchups: Matchup[] = createMatchups(conference.teams);
+	let conferenceRounds: confRounds = createConferenceMatchups(conference);
+
+	finalsData.update((current) => {
+		if (current.teams[0] == null || current.teams[1] == null) {
+			current.teams = [...current.teams, conferenceRounds.winnerId];
+		}
+		return current;
+	});
 </script>
 
 <div
-	class="conference conference--{conference.name.toLowerCase()}{rtl ? ' conference--rtl' : ''}"
-	data-id={conference.id}
+	class="conference conference--{conference.altName.toLowerCase()}{rtl ? ' conference--rtl' : ''}"
 >
-	<h2 class="conference__title">{conference.fullName} Conference</h2>
+	<h2 class="conference__title">{conference.name} Conference</h2>
 
-	<div class="conference__teams d-grid">
-		{#each matchups as matchup}
-			<MatchupCard {matchup} />
-		{/each}
+	<div class="conference__rounds d-flex">
+		<div class="conference__round d-grid">
+			<RoundCard roundData={conferenceRounds.firstRound} />
+		</div>
+
+		<div class="conference__round d-grid">
+			<RoundCard roundData={conferenceRounds.secondRound} />
+		</div>
+
+		<div class="conference__round d-grid">
+			<RoundCard roundData={conferenceRounds.thirdRound} />
+		</div>
 	</div>
 </div>
 
 <style lang="scss">
 	$conference: '.conference';
 	#{$conference} {
-		--cardWidth: 170px;
+		--colWidth: 120px;
+		--colGap: 25px;
 
-		&__teams {
-			gap: 20px;
+		&__rounds {
+			align-items: center;
+			gap: var(--colGap);
 		}
 
-		&__teams {
-			grid-template-columns: var(--cardWidth);
+		&__title {
+			font-size: 1.2em;
+			margin-bottom: 20px;
 		}
 
-		&--rtl &__teams {
+		&__round {
+			grid-template-columns: var(--colWidth);
+		}
+
+		&--rtl &__title {
+			text-align: right;
+		}
+
+		&--rtl &__rounds {
+			flex-direction: row-reverse;
+		}
+
+		&--rtl &__round {
 			justify-content: flex-end;
 		}
 	}

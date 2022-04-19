@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export class Team {
-	readonly id: string;
+export class storeTeam {
+	id: string;
 	name: string;
 	city: string;
 	abbr: string;
@@ -13,7 +13,7 @@ export class Team {
 
 	constructor(seed: number, name: string, city: string, abbr: string, imgName: string = null) {
 		this.id = uuidv4();
-		this.fullName = `${city} ${name}`;
+		this.fullName = city == null ? name : `${city} ${name}`;
 
 		this.seed = seed;
 		this.name = name;
@@ -21,6 +21,6 @@ export class Team {
 		this.city = city;
 
 		let testPath: string = imgName ? imgName : this.fullName.toLowerCase().replace(' ', '-');
-		this.imgPath = `${Team.imgPath}/${testPath}.svg`;
+		this.imgPath = `${storeTeam.imgPath}/${testPath}.svg`;
 	}
 }
