@@ -19,16 +19,16 @@ const west = new storeConference(
 		new storeTeam(8, 'Pelicans', 'New Orleans', 'NOP', 'pelicans')
 	],
 	new storeRound('First round', '', [
-		[4, 2],
-		[4, 2],
+		[4, 0],
+		[4, 1],
 		[4, 3],
-		[3, 4]
+		[2, 4]
 	]),
 	new storeRound('Second round', 'Conference Semifinals', [
-		[4, 0],
-		[3, 4]
+		[4, 2],
+		[4, 3]
 	]),
-	new storeRound('Semifinals', 'Conference finals', [[2, 4]])
+	new storeRound('Semifinals', 'Conference finals', [[4, 3]])
 );
 
 const east = new storeConference(
@@ -46,20 +46,20 @@ const east = new storeConference(
 	],
 	new storeRound('First round', '', [
 		[4, 0],
+		[4, 1],
 		[4, 0],
-		[0, 4],
-		[4, 0]
+		[4, 2]
 	]),
 	new storeRound('Second round', 'Conference Semifinals', [
-		[4, 2],
-		[4, 3]
+		[2, 4],
+		[2, 4]
 	]),
-	new storeRound('Semifinals', 'Conference finals', [[0, 4]])
+	new storeRound('Semifinals', 'Conference finals', [[3, 4]])
 );
 
 const finals = new storeFinals('Finals', 'NBA Finals', [3, 4]);
 const playoffs = new storePayoffs('NBA 2022 Playoffs', west, east);
 
-export const storePlayoffsData = readable(playoffs);
-export const tbd = readable(new storeTeam(0, 'TBD', 'TBD', 'TBD', 'nba'));
+export const storePlayoffsData = writable(playoffs);
+export const tbd = readable(new storeTeam(0, 'TBD', null, 'TBD', 'nba'));
 export const finalsData = writable(finals);
